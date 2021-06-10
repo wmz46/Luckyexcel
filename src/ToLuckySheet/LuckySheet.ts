@@ -48,6 +48,12 @@ export class LuckySheet extends LuckySheetBase {
         if(sheetView.length>0){
             let attrList = sheetView[0].attributeList;
             showGridLines = getXmlAttibute(attrList, "showGridLines", "1");
+            //解决poi导出的excel网格线格式不匹配问题
+            if(showGridLines == "true") {
+                showGridLines = "1"
+            }else if(showGridLines == "false"){
+                showGridLines =  "0";
+            }
             tabSelected = getXmlAttibute(attrList, "tabSelected", "0");
             zoomScale = getXmlAttibute(attrList, "zoomScale", "100");
             // let colorId = getXmlAttibute(attrList, "colorId", "0");
